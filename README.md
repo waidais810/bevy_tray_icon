@@ -18,7 +18,7 @@ Please see [here](https://github.com/not-elm/bevy_tray_icon/blob/main/CHANGELOG.
 
 ## Compatible Bevy versions
 
-| bevy_flurx     | bevy   |
+| bevy_tray_icon | bevy   |
 |----------------|--------|
 | 0.1.0          | 0.13.2 |
 
