@@ -1,14 +1,10 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+//! The plugin to handle system tray from bevy world
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub mod resource;
+pub mod plugin;
+pub mod error;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+
+
+
+
