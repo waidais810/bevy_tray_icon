@@ -11,7 +11,7 @@ readme = "README.md"
 repository = "https://github.com/not-elm/bevy_tray_icon"
 
 [dependencies]
-bevy = { version = "0.13.2", default-features = false }
+bevy = { version = "0.13.2", default-features = false, features = ["bevy_asset"] }
 tray-icon = "0.14.0"
 thiserror = "1.0.61"
 
