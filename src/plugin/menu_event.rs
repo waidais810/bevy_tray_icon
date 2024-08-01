@@ -2,7 +2,7 @@
 
 
 use bevy::app::{App, Plugin, Update};
-use bevy::prelude::{Event, EventWriter};
+use bevy::prelude::{Commands, Event, World};
 use tray_icon::menu::MenuId;
 
 /// The event fired when a menu is clicked.
@@ -24,11 +24,13 @@ impl Plugin for MenuEventPlugin {
 }
 
 fn menu_event(
-    mut ew: EventWriter<MenuEvent>
+    mut commands: Commands
 ) {
     while let Ok(event) = tray_icon::menu::MenuEvent::receiver().try_recv() {
-        ew.send(MenuEvent{
-            id: event.id
+        commands.add(|w:&mut World|{
+            w.send_event(MenuEvent {
+                id: event.id,
+            });
         });
     }
 }
