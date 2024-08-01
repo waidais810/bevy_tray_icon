@@ -3,7 +3,7 @@
 
 use bevy::app::{App, Plugin, PostUpdate};
 use bevy::asset::Assets;
-use bevy::prelude::{Image, IntoSystemConfigs, NonSend, Res, resource_added, resource_changed, World};
+use bevy::prelude::{resource_added, resource_changed, Condition, Image, IntoSystemConfigs, NonSend, Res, World};
 use tray_icon::TrayIconBuilder;
 
 use crate::plugin::menu_event::MenuEventPlugin;
@@ -20,7 +20,7 @@ impl Plugin for TrayIconPlugin {
         app.add_plugins(MenuEventPlugin);
         app.add_systems(PostUpdate, (
             create_tray.run_if(resource_added::<TrayIcon>),
-            update_tray.run_if(resource_changed::<TrayIcon>)
+            update_tray.run_if(resource_changed::<TrayIcon>.or_else(resource_added::<TrayIcon>))
         ).chain());
     }
 }
